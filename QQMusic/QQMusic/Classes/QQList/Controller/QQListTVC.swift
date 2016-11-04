@@ -48,6 +48,13 @@ extension QQListTVC{
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = musicModels[indexPath.row]
+        
+        QQMusicOperationTool.shareInstance.playMusic(musicM: model)
+        
+        self.performSegue(withIdentifier: "listToDetail", sender: nil)
+    }
 }
 
 // MARK:- 界面处理
