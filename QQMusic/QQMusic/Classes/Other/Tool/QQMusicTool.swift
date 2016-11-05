@@ -39,4 +39,8 @@ class QQMusicTool: NSObject {
         player?.play()
     }
 
+    func pauseMusic() -> (){
+        player?.pause()
+    }
+    
 }

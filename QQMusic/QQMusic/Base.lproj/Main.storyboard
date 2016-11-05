@@ -141,6 +141,7 @@
                                             <constraint firstAttribute="width" constant="64" id="NFH-9X-E38"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="player_btn_pause_normal"/>
+                                        <state key="selected" backgroundImage="player_btn_play_normal"/>
                                         <state key="highlighted" backgroundImage="player_btn_pause_highlight"/>
                                         <connections>
                                             <action selector="playOrPause:" destination="V2v-to-dWn" eventType="touchUpInside" id="HrF-Sp-ZdT"/>
@@ -256,6 +257,7 @@
         <image name="player_btn_next_normal" width="64" height="64"/>
         <image name="player_btn_pause_highlight" width="64" height="64"/>
         <image name="player_btn_pause_normal" width="64" height="64"/>
+        <image name="player_btn_play_normal" width="64" height="64"/>
         <image name="player_btn_pre_highlight" width="64" height="64"/>
         <image name="player_btn_pre_normal" width="64" height="64"/>
     </resources>

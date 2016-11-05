@@ -40,12 +40,22 @@ class QQDetailVC: UIViewController {
     @IBAction func close() {
     }
     @IBAction func playOrPause(_ sender: UIButton) {
+        sender.isSelected = !sender.isSelected
+        if sender.isSelected{
+            QQMusicOperationTool.shareInstance.pauseCurrentMusic()
+        }else{
+            QQMusicOperationTool.shareInstance.playCurrentMusic()
+        }
     }
     @IBAction func preMusic() {
         setupOnce()
+        
+        QQMusicOperationTool.shareInstance.preMusic()
     }
     @IBAction func nextMusic() {
         setupOnce()
+        
+        QQMusicOperationTool.shareInstance.nextMusic()
     }
     
     // 负责更新很多次的timer

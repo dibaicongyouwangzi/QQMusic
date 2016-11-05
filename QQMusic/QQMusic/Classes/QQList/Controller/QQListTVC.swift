@@ -24,6 +24,7 @@ class QQListTVC: UITableViewController {
         
         QQMusicDataTool.getMusicModels { (models:[QQMusicModel]) in
             self.musicModels = models
+            QQMusicOperationTool.shareInstance.musicModels = models;
         }
     }
 }
