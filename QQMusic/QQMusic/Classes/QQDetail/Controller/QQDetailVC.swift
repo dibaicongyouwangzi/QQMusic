@@ -8,28 +8,95 @@
 
 import UIKit
 
+// MARK:- 存放属性
 class QQDetailVC: UIViewController {
 
+    @IBOutlet weak var lrcScrollView: UIScrollView!
+    
+    // 歌词的视图
+    var lrcView: UIView?
+    
+    @IBOutlet weak var foreImageView: UIImageView!
+    
+    @IBOutlet weak var lrclabel: UILabel!
+    @IBOutlet weak var progressSlider: UISlider!
+}
+
+// MARK:- 业务逻辑
+extension QQDetailVC {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        addLrcView()
+        setupLrcScrollView()
+        setSlider()
     }
+}
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+// MARK:- 界面操作
+extension QQDetailVC {
+
+    // 添加歌词视图
+    func addLrcView() -> (){
+        lrcView = UIView()
+        lrcView?.backgroundColor = UIColor.clear
+        lrcScrollView.addSubview(lrcView!)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // 调整frame
+    func setLrcViewFrame() -> (){
+        lrcView?.frame = lrcScrollView.bounds
+        lrcView?.frame.origin.x = lrcScrollView.frame.size.width
+        lrcScrollView.contentSize = CGSize(width: lrcScrollView.frame.size.width * 2, height: 0)
     }
-    */
-
+    
+    func setSlider() -> (){
+        progressSlider.setThumbImage(UIImage(named:"player_slider_playback_thumb"), for: .normal)
+    }
+    
+    func setupForeImageView() -> (){
+        foreImageView.layer.cornerRadius = foreImageView.frame.size.width / 2
+        foreImageView.layer.masksToBounds = true
+    }
+    
+    func setupLrcScrollView() -> (){
+        lrcScrollView.delegate = self
+        lrcScrollView.isPagingEnabled = true
+        lrcScrollView.showsHorizontalScrollIndicator = false
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        setLrcViewFrame()
+        setupForeImageView()
+    }
 }
+
+
+// MARK:- 做动画
+extension QQDetailVC: UIScrollViewDelegate{
+   
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let x = scrollView.contentOffset.x
+        print(x)
+        
+        let radio = 1 - x / scrollView.frame.size.width
+        
+        foreImageView.alpha = radio
+        lrclabel.alpha = radio
+    }
+}
+
+
+
+
+
+
+
+
