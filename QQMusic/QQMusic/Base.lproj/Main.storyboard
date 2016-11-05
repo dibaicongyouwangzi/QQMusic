@@ -74,11 +74,25 @@
                                         <state key="normal" image="main_tab_more"/>
                                         <state key="highlighted" image="main_tab_more_h"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTc-aV-kaJ" userLabel="关闭按钮">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="Ewx-9I-gi0"/>
+                                            <constraint firstAttribute="height" constant="50" id="gqR-Zn-AWR"/>
+                                        </constraints>
+                                        <state key="normal" image="miniplayer_btn_playlist_close"/>
+                                        <state key="highlighted" image="miniplayer_btn_playlist_close_b"/>
+                                        <connections>
+                                            <action selector="close" destination="V2v-to-dWn" eventType="touchUpInside" id="bYQ-Pj-cUE"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="zfp-KU-wgR" firstAttribute="top" secondItem="Gux-oe-O3C" secondAttribute="top" id="89L-SK-Zl7"/>
                                     <constraint firstItem="hyD-Xm-uTE" firstAttribute="centerX" secondItem="Gux-oe-O3C" secondAttribute="centerX" id="CNc-7Z-AxT"/>
+                                    <constraint firstItem="GTc-aV-kaJ" firstAttribute="top" secondItem="Gux-oe-O3C" secondAttribute="top" id="H99-YK-sN0"/>
+                                    <constraint firstItem="GTc-aV-kaJ" firstAttribute="leading" secondItem="Gux-oe-O3C" secondAttribute="leading" id="PXJ-2V-tVu"/>
                                     <constraint firstAttribute="trailing" secondItem="peG-dO-l9p" secondAttribute="trailing" id="Whu-Ya-byP"/>
                                     <constraint firstItem="hyD-Xm-uTE" firstAttribute="top" secondItem="zfp-KU-wgR" secondAttribute="bottom" constant="10" id="atc-1k-0Mb"/>
                                     <constraint firstItem="peG-dO-l9p" firstAttribute="top" secondItem="Gux-oe-O3C" secondAttribute="top" id="bPD-Cf-roI"/>
@@ -90,7 +104,7 @@
                                 <rect key="frame" x="0.0" y="148" width="375" height="391"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jay.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="EhE-uA-HGp">
-                                        <rect key="frame" x="82.5" y="80" width="211" height="211"/>
+                                        <rect key="frame" x="82" y="80" width="211" height="211"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="EhE-uA-HGp" secondAttribute="height" multiplier="1:1" id="g00-LL-pv2"/>
                                         </constraints>
@@ -128,6 +142,9 @@
                                         </constraints>
                                         <state key="normal" backgroundImage="player_btn_pause_normal"/>
                                         <state key="highlighted" backgroundImage="player_btn_pause_highlight"/>
+                                        <connections>
+                                            <action selector="playOrPause:" destination="V2v-to-dWn" eventType="touchUpInside" id="HrF-Sp-ZdT"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zz5-UW-PK8">
                                         <rect key="frame" x="31" y="54" width="64" height="64"/>
@@ -137,6 +154,9 @@
                                         </constraints>
                                         <state key="normal" backgroundImage="player_btn_pre_normal"/>
                                         <state key="highlighted" backgroundImage="player_btn_pre_highlight"/>
+                                        <connections>
+                                            <action selector="preMusic" destination="V2v-to-dWn" eventType="touchUpInside" id="xwY-Rg-0VW"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oNz-gb-XaA">
                                         <rect key="frame" x="279" y="54" width="64" height="64"/>
@@ -146,6 +166,9 @@
                                         </constraints>
                                         <state key="normal" backgroundImage="player_btn_next_normal"/>
                                         <state key="highlighted" backgroundImage="player_btn_next_highlight"/>
+                                        <connections>
+                                            <action selector="nextMusic" destination="V2v-to-dWn" eventType="touchUpInside" id="g0f-kk-AVH"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A1N-JT-nPq">
                                         <rect key="frame" x="5" y="5" width="46" height="21"/>
@@ -207,21 +230,28 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backImageView" destination="f93-gQ-ecL" id="fCd-k9-nVc"/>
+                        <outlet property="costTimeLabel" destination="A1N-JT-nPq" id="Mkw-4I-SK6"/>
                         <outlet property="foreImageView" destination="EhE-uA-HGp" id="wRT-pw-a61"/>
                         <outlet property="lrcScrollView" destination="j4W-GO-eFF" id="AbM-zs-3E1"/>
                         <outlet property="lrclabel" destination="2vv-Tw-PNm" id="RvU-gj-aD8"/>
                         <outlet property="progressSlider" destination="9WK-9O-1MG" id="Iq1-zf-Y5t"/>
+                        <outlet property="singNameLabel" destination="hyD-Xm-uTE" id="ra0-BP-gKG"/>
+                        <outlet property="songNameLabel" destination="zfp-KU-wgR" id="Pqy-5n-aRa"/>
+                        <outlet property="totalTimeLabel" destination="tw1-t8-QFw" id="aoU-rY-80X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ccf-B5-ghi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="792.79999999999995" y="-198.35082458770617"/>
+            <point key="canvasLocation" x="638" y="-415"/>
         </scene>
     </scenes>
     <resources>
         <image name="jay.jpg" width="350" height="350"/>
         <image name="main_tab_more" width="45" height="45"/>
         <image name="main_tab_more_h" width="45" height="45"/>
+        <image name="miniplayer_btn_playlist_close" width="40" height="40"/>
+        <image name="miniplayer_btn_playlist_close_b" width="40" height="40"/>
         <image name="player_btn_next_highlight" width="64" height="64"/>
         <image name="player_btn_next_normal" width="64" height="64"/>
         <image name="player_btn_pause_highlight" width="64" height="64"/>
