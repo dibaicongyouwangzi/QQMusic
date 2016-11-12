@@ -15,7 +15,7 @@ class QQMusicTool: NSObject {
     var player:AVAudioPlayer?
     
     func playMusic(musicName: String){
-    
+        
         // 1. 获取需要播放的音乐文件路径
         guard let url = Bundle.main.url(forResource:musicName, withExtension: nil) else {return}
         

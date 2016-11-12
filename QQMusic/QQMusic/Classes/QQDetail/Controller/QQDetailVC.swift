@@ -48,14 +48,15 @@ class QQDetailVC: UIViewController {
         }
     }
     @IBAction func preMusic() {
-        setupOnce()
-        
         QQMusicOperationTool.shareInstance.preMusic()
+        
+        // 切换一次更新界面的操作
+        setupOnce()
     }
     @IBAction func nextMusic() {
-        setupOnce()
-        
         QQMusicOperationTool.shareInstance.nextMusic()
+        
+        setupOnce()
     }
     
     // 负责更新很多次的timer
@@ -87,25 +88,40 @@ extension QQDetailVC {
     }
     
     
+    // 当歌曲切换时，需要更新一次的操作
     func setupOnce() -> (){
-        foreImageView.image = nil
+        
+        let musicMessageM = QQMusicOperationTool.shareInstance.getMusicMessageModel()
+
+        guard let musicM = musicMessageM.musicM else {return}
+        
         /** 背景图片 1 */
-        backImageView = nil
+        if musicM.icon != nil{
+            backImageView.image = UIImage(named: (musicM.icon)!)
+            // 前进图片
+            foreImageView.image = UIImage(named: (musicM.icon)!)
+        }
         /** 歌曲名称 1 */
-        songNameLabel.text = ""
+        songNameLabel.text = musicM.name
         /** 歌手名称 1 */
-        singNameLabel.text = ""
+        singNameLabel.text = musicM.singer
         /** 总时长 1 */
-        totalTimeLabel.text = ""
+        totalTimeLabel.text = QQTimeTool.getFormatTime(timeInterval: musicMessageM.totalTime)
     }
     
+    
+    // 当歌曲切换时，需要更新N次的操作
     func setupTimes() -> (){
+        
+        let musicMessageM = QQMusicOperationTool.shareInstance.getMusicMessageModel()
+
         /** 歌词label n */
-        lrclabel.text = ""
+//        lrclabel.text = ""
+        
         /** 已经播放时长 n */
-        costTimeLabel.text = ""
+        costTimeLabel.text = QQTimeTool.getFormatTime(timeInterval: musicMessageM.costTime)
         /** 进度条 n */
-        progressSlider.value = 0
+        progressSlider.value = Float(musicMessageM.costTime / musicMessageM.totalTime)
     }
     
     

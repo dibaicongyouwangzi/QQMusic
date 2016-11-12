@@ -10,6 +10,23 @@ import UIKit
 
 class QQMusicOperationTool: NSObject {
 
+    var musicModel = QQMusicMessageModel()
+    
+    func getMusicMessageModel() -> QQMusicMessageModel{
+        
+        // 在这里，保持，数据的最新状态，就可以
+        
+        //当前正在播放的歌曲信息
+        musicModel.musicM = musicModels[currentPlayIndex]
+        
+        musicModel.costTime = (tool.player?.currentTime)!
+        musicModel.totalTime = (tool.player?.duration)!
+        
+        musicModel.isPlaying = (tool.player?.isPlaying)!
+        
+        return musicModel
+    }
+    
     var currentPlayIndex = -1{
         didSet{
             if currentPlayIndex < 0{
