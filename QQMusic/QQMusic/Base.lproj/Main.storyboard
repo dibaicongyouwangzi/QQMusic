@@ -140,8 +140,8 @@
                                             <constraint firstAttribute="height" constant="64" id="B4X-aS-lll"/>
                                             <constraint firstAttribute="width" constant="64" id="NFH-9X-E38"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="player_btn_pause_normal"/>
-                                        <state key="selected" backgroundImage="player_btn_play_normal"/>
+                                        <state key="normal" backgroundImage="player_btn_play_normal"/>
+                                        <state key="selected" backgroundImage="player_btn_pause_normal"/>
                                         <state key="highlighted" backgroundImage="player_btn_pause_highlight"/>
                                         <connections>
                                             <action selector="playOrPause:" destination="V2v-to-dWn" eventType="touchUpInside" id="HrF-Sp-ZdT"/>
@@ -236,6 +236,7 @@
                         <outlet property="foreImageView" destination="EhE-uA-HGp" id="wRT-pw-a61"/>
                         <outlet property="lrcScrollView" destination="j4W-GO-eFF" id="AbM-zs-3E1"/>
                         <outlet property="lrclabel" destination="2vv-Tw-PNm" id="RvU-gj-aD8"/>
+                        <outlet property="playOrPauseBtn" destination="qEo-GU-ow5" id="KIe-zY-Oyj"/>
                         <outlet property="progressSlider" destination="9WK-9O-1MG" id="Iq1-zf-Y5t"/>
                         <outlet property="singNameLabel" destination="hyD-Xm-uTE" id="ra0-BP-gKG"/>
                         <outlet property="songNameLabel" destination="zfp-KU-wgR" id="Pqy-5n-aRa"/>

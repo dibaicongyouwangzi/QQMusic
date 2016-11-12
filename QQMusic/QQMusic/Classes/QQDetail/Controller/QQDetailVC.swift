@@ -36,15 +36,21 @@ class QQDetailVC: UIViewController {
     /** 进度条 n */
     @IBOutlet weak var progressSlider: UISlider!
     
+    @IBOutlet weak var playOrPauseBtn: UIButton!
    
     @IBAction func close() {
     }
+    
+    // 播放或者暂停
     @IBAction func playOrPause(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected{
-            QQMusicOperationTool.shareInstance.pauseCurrentMusic()
-        }else{
             QQMusicOperationTool.shareInstance.playCurrentMusic()
+            resumeRotationAnimation()
+            
+        }else{
+            QQMusicOperationTool.shareInstance.pauseCurrentMusic()
+            pauseRotationAnimation()
         }
     }
     @IBAction func preMusic() {
@@ -107,6 +113,14 @@ extension QQDetailVC {
         singNameLabel.text = musicM.singer
         /** 总时长 1 */
         totalTimeLabel.text = QQTimeTool.getFormatTime(timeInterval: musicMessageM.totalTime)
+        
+        addRotationAnimation()
+        
+        if musicMessageM.isPlaying{
+            resumeRotationAnimation()
+        }else{
+            pauseRotationAnimation()
+        }
     }
     
     
@@ -122,6 +136,8 @@ extension QQDetailVC {
         costTimeLabel.text = QQTimeTool.getFormatTime(timeInterval: musicMessageM.costTime)
         /** 进度条 n */
         progressSlider.value = Float(musicMessageM.costTime / musicMessageM.totalTime)
+    
+        playOrPauseBtn.isSelected = musicMessageM.isPlaying
     }
     
     
@@ -194,6 +210,31 @@ extension QQDetailVC: UIScrollViewDelegate{
         foreImageView.alpha = radio
         lrclabel.alpha = radio
     }
+    
+    
+    // 添加旋转动画
+    func addRotationAnimation() -> (){
+        
+        foreImageView.layer.removeAnimation(forKey: "rotation")
+        let animation = CABasicAnimation(keyPath: "transform.rotation.z")
+        animation.fromValue = 0
+        animation.toValue = M_PI * 2
+        animation.duration = 30
+        animation.repeatCount = MAXFLOAT
+        animation.isRemovedOnCompletion = false
+        foreImageView.layer.add(animation, forKey: "rotation")
+    }
+    
+    // 暂停旋转动画
+    func pauseRotationAnimation() -> (){
+        foreImageView.layer.pauseAnimate()
+    }
+    
+    // 继续旋转动画
+    func resumeRotationAnimation() -> (){
+        foreImageView.layer.resumeAnimate()
+    }
+
 }
 
 

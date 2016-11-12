@@ -63,6 +63,7 @@
 		5468AA861DCD0B0800AD2CF3 /* QQMusicOperationTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5468AA851DCD0B0800AD2CF3 /* QQMusicOperationTool.swift */; };
 		54E4C0F71DD7AFFE00E0F04F /* QQMusicMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E4C0F61DD7AFFE00E0F04F /* QQMusicMessageModel.swift */; };
 		54E4C0F91DD7BBB000E0F04F /* QQTimeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E4C0F81DD7BBB000E0F04F /* QQTimeTool.swift */; };
+		54E4C1001DD7D0BB00E0F04F /* CALayer+sz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E4C0FF1DD7D0BB00E0F04F /* CALayer+sz.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +125,7 @@
 		5468AA851DCD0B0800AD2CF3 /* QQMusicOperationTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQMusicOperationTool.swift; sourceTree = "<group>"; };
 		54E4C0F61DD7AFFE00E0F04F /* QQMusicMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQMusicMessageModel.swift; sourceTree = "<group>"; };
 		54E4C0F81DD7BBB000E0F04F /* QQTimeTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQTimeTool.swift; sourceTree = "<group>"; };
+		54E4C0FF1DD7D0BB00E0F04F /* CALayer+sz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+sz.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 		5468AA0F1DCCC1A100AD2CF3 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				54E4C0FF1DD7D0BB00E0F04F /* CALayer+sz.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				TargetAttributes = {
 					5468A9F61DCCBD6200AD2CF3 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -493,6 +497,7 @@
 				5468AA811DCCEB9A00AD2CF3 /* QQMusicCell.swift in Sources */,
 				5468AA791DCCCD9E00AD2CF3 /* QQDetailVC.swift in Sources */,
 				5468AA771DCCCD8500AD2CF3 /* QQListTVC.swift in Sources */,
+				54E4C1001DD7D0BB00E0F04F /* CALayer+sz.swift in Sources */,
 				5468AA861DCD0B0800AD2CF3 /* QQMusicOperationTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -615,10 +620,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/QQMusic/Classes/Other/System/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dibaicongyouwangzi.QQMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -628,6 +635,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/QQMusic/Classes/Other/System/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dibaicongyouwangzi.QQMusic;
