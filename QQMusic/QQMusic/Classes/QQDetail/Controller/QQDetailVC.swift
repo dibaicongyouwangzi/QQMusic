@@ -40,9 +40,19 @@ class QQDetailVC: UIViewController {
     @IBOutlet weak var progressSlider: UISlider!
     
     @IBOutlet weak var playOrPauseBtn: UIButton!
-   
+    
+    // 负责更新很多次的timer
+    var timer: Timer?
+    
+    // 负责更新歌词的Link
+    var updateLrcLink : CADisplayLink?
+}
+
+// MARK:- 业务逻辑
+extension QQDetailVC {
+    
     @IBAction func close() {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     // 播放或者暂停
@@ -52,7 +62,8 @@ class QQDetailVC: UIViewController {
             QQMusicOperationTool.shareInstance.playCurrentMusic()
             resumeRotationAnimation()
             
-        }else{
+        }else
+        {
             QQMusicOperationTool.shareInstance.pauseCurrentMusic()
             pauseRotationAnimation()
         }
@@ -68,17 +79,7 @@ class QQDetailVC: UIViewController {
         
         setupOnce()
     }
-    
-    // 负责更新很多次的timer
-    var timer: Timer?
-    
-    // 负责更新歌词的Link
-    var updateLrcLink : CADisplayLink?
-}
 
-// MARK:- 业务逻辑
-extension QQDetailVC {
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupOnce()
@@ -176,6 +177,7 @@ extension QQDetailVC {
         updateLrcLink = nil
     }
     
+    // 更新歌词
     func updateLrc() -> (){
         let musicMessageM = QQMusicOperationTool.shareInstance.getMusicMessageModel()
         
@@ -186,10 +188,19 @@ extension QQDetailVC {
         // 歌词数组
         let lrcMs = lrcVc?.lrcMs
         
-        let lrcM = QQMusicDataTool.getCurrentLrcM(currentTime: time, lrcMs: lrcMs!)
+        let rowLrcM = QQMusicDataTool.getCurrentLrcM(currentTime: time, lrcMs: lrcMs!)
+        
+        let lrcM = rowLrcM.lrcM
         
         // 赋值
         lrclabel.text = lrcM?.lrcContent
+        
+        // 滚动歌词
+        // 滚到哪一行
+        let row = rowLrcM.row
+        
+        // 赋值给lrcVC，让它来负责具体怎么滚
+        lrcVc?.scrollRow = row
     }
     
 }

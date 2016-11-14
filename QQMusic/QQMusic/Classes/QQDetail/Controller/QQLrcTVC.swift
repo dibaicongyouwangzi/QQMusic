@@ -13,6 +13,19 @@ import UIKit
 
 class QQLrcTVC: UITableViewController {
 
+    
+    var scrollRow = 0{
+        didSet{
+            if scrollRow == oldValue{
+                return
+            }
+            
+            let indexPath = NSIndexPath(row: scrollRow, section: 0)
+            tableView.scrollToRow(at: indexPath as IndexPath, at: UITableViewScrollPosition.middle, animated: true)
+        }
+    }
+    
+    
     var lrcMs : [QQLrcModel] = [QQLrcModel]() {
         didSet{
             tableView.reloadData()
