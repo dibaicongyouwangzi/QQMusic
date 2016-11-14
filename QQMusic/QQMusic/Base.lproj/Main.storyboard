@@ -101,22 +101,22 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eue-1F-u9M" userLabel="中间的View">
-                                <rect key="frame" x="0.0" y="148" width="375" height="391"/>
+                                <rect key="frame" x="0.0" y="148" width="375" height="381"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jay.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="EhE-uA-HGp">
-                                        <rect key="frame" x="82" y="80" width="211" height="211"/>
+                                        <rect key="frame" x="77" y="75" width="221" height="221"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="EhE-uA-HGp" secondAttribute="height" multiplier="1:1" id="g00-LL-pv2"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vv-Tw-PNm">
-                                        <rect key="frame" x="166" y="311" width="42" height="21"/>
+                                        <rect key="frame" x="166" y="326" width="42" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j4W-GO-eFF">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="371"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="361"/>
                                     </scrollView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -125,14 +125,14 @@
                                     <constraint firstAttribute="trailing" secondItem="j4W-GO-eFF" secondAttribute="trailing" id="QHT-S4-7fa"/>
                                     <constraint firstItem="2vv-Tw-PNm" firstAttribute="centerX" secondItem="eue-1F-u9M" secondAttribute="centerX" id="dIy-Rd-VpU"/>
                                     <constraint firstItem="j4W-GO-eFF" firstAttribute="top" secondItem="eue-1F-u9M" secondAttribute="top" id="eno-V8-W0y"/>
-                                    <constraint firstItem="EhE-uA-HGp" firstAttribute="top" secondItem="eue-1F-u9M" secondAttribute="top" constant="80" id="fxD-dG-aFj"/>
+                                    <constraint firstItem="EhE-uA-HGp" firstAttribute="top" secondItem="eue-1F-u9M" secondAttribute="top" constant="75" id="fxD-dG-aFj"/>
                                     <constraint firstAttribute="bottom" secondItem="j4W-GO-eFF" secondAttribute="bottom" constant="20" symbolic="YES" id="hTO-Lf-vo4"/>
-                                    <constraint firstItem="2vv-Tw-PNm" firstAttribute="top" secondItem="EhE-uA-HGp" secondAttribute="bottom" constant="20" id="ygq-IY-csq"/>
+                                    <constraint firstItem="2vv-Tw-PNm" firstAttribute="top" secondItem="EhE-uA-HGp" secondAttribute="bottom" constant="30" id="ygq-IY-csq"/>
                                     <constraint firstItem="j4W-GO-eFF" firstAttribute="leading" secondItem="eue-1F-u9M" secondAttribute="leading" id="ziM-v6-qVS"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1s1-3d-5fy" userLabel="底部的View">
-                                <rect key="frame" x="0.0" y="539" width="375" height="128"/>
+                                <rect key="frame" x="0.0" y="529" width="375" height="128"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qEo-GU-ow5">
                                         <rect key="frame" x="155" y="54" width="64" height="64"/>
@@ -217,7 +217,7 @@
                             <constraint firstAttribute="trailing" secondItem="1s1-3d-5fy" secondAttribute="trailing" id="Ac4-Id-8hp"/>
                             <constraint firstItem="f93-gQ-ecL" firstAttribute="top" secondItem="nPk-Kr-ByE" secondAttribute="bottom" constant="-20" id="Eub-Q2-twK"/>
                             <constraint firstItem="6eT-Up-NBg" firstAttribute="top" secondItem="f93-gQ-ecL" secondAttribute="bottom" id="IHu-fz-XAe"/>
-                            <constraint firstItem="6eT-Up-NBg" firstAttribute="top" secondItem="1s1-3d-5fy" secondAttribute="bottom" id="LdC-gg-rJS"/>
+                            <constraint firstItem="6eT-Up-NBg" firstAttribute="top" secondItem="1s1-3d-5fy" secondAttribute="bottom" constant="10" id="LdC-gg-rJS"/>
                             <constraint firstItem="Gux-oe-O3C" firstAttribute="leading" secondItem="jWW-0g-XvL" secondAttribute="leading" id="QbS-qs-lJ9"/>
                             <constraint firstItem="1s1-3d-5fy" firstAttribute="leading" secondItem="jWW-0g-XvL" secondAttribute="leading" id="VpQ-xh-a9b"/>
                             <constraint firstItem="1s1-3d-5fy" firstAttribute="top" secondItem="eue-1F-u9M" secondAttribute="bottom" id="WK8-Sr-ulC"/>

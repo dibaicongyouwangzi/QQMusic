@@ -14,8 +14,11 @@ class QQDetailVC: UIViewController {
     @IBOutlet weak var lrcScrollView: UIScrollView!
     
     // 歌词的视图
-    var lrcView: UIView?
+    lazy var lrcVc: QQLrcTVC? = {
     
+        return QQLrcTVC()
+    }()
+
     
     // 分析界面，根据不同的更新频率，采用不同的方案赋值
     /** 歌词动画背景 1 */
@@ -68,6 +71,9 @@ class QQDetailVC: UIViewController {
     
     // 负责更新很多次的timer
     var timer: Timer?
+    
+    // 负责更新歌词的Link
+    var updateLrcLink : CADisplayLink?
 }
 
 // MARK:- 业务逻辑
@@ -78,11 +84,15 @@ extension QQDetailVC {
         setupOnce()
         
         addTimer()
+        
+        addLink()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         removerTimer()
+        
+        removeLink()
     }
     
     
@@ -117,6 +127,7 @@ extension QQDetailVC {
         
         // 切换最新的歌词
         let lrcMs = QQMusicDataTool.getLrcMs(lrcName: musicM.lrcname)
+        lrcVc?.lrcMs = lrcMs
         
         addRotationAnimation()
         
@@ -155,6 +166,32 @@ extension QQDetailVC {
         timer = nil
     }
     
+    func addLink() -> (){
+        updateLrcLink =  CADisplayLink(target: self, selector: #selector(QQDetailVC.updateLrc))
+        updateLrcLink?.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
+    }
+    
+    func removeLink() -> (){
+        updateLrcLink?.invalidate()
+        updateLrcLink = nil
+    }
+    
+    func updateLrc() -> (){
+        let musicMessageM = QQMusicOperationTool.shareInstance.getMusicMessageModel()
+        
+        // 拿到歌词
+        // 当前时间
+        let time = musicMessageM.costTime
+        
+        // 歌词数组
+        let lrcMs = lrcVc?.lrcMs
+        
+        let lrcM = QQMusicDataTool.getCurrentLrcM(currentTime: time, lrcMs: lrcMs!)
+        
+        // 赋值
+        lrclabel.text = lrcM?.lrcContent
+    }
+    
 }
 
 // MARK:- 界面操作
@@ -162,15 +199,14 @@ extension QQDetailVC {
 
     // 添加歌词视图
     func addLrcView() -> (){
-        lrcView = UIView()
-        lrcView?.backgroundColor = UIColor.clear
-        lrcScrollView.addSubview(lrcView!)
+        lrcVc?.tableView.backgroundColor = UIColor.clear
+        lrcScrollView.addSubview((lrcVc?.tableView)!)
     }
     
     // 调整frame
     func setLrcViewFrame() -> (){
-        lrcView?.frame = lrcScrollView.bounds
-        lrcView?.frame.origin.x = lrcScrollView.frame.size.width
+        lrcVc?.tableView.frame = lrcScrollView.bounds
+        lrcVc?.tableView.frame.origin.x = lrcScrollView.frame.size.width
         lrcScrollView.contentSize = CGSize(width: lrcScrollView.frame.size.width * 2, height: 0)
     }
     
