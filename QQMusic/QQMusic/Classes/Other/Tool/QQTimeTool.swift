@@ -19,4 +19,19 @@ class QQTimeTool: NSObject {
         return String(format: "%02d:%02d", min,sec)
     }
     
+    
+    class func getTimeInterval(formatTime : String) -> TimeInterval{
+    
+        // 00：00.91
+        // 前面的00是分钟，后面的00.91是秒
+    
+        let minSec = formatTime.components(separatedBy: ":")
+        if minSec.count != 2 {
+            return 0
+        }
+        let min = TimeInterval(minSec[0])
+        let sec = TimeInterval(minSec[1])
+        
+        return min! * 60 + sec!
+    }
 }

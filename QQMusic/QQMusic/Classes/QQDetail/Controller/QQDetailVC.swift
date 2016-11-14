@@ -39,6 +39,7 @@ class QQDetailVC: UIViewController {
     @IBOutlet weak var playOrPauseBtn: UIButton!
    
     @IBAction func close() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     // 播放或者暂停
@@ -113,6 +114,9 @@ extension QQDetailVC {
         singNameLabel.text = musicM.singer
         /** 总时长 1 */
         totalTimeLabel.text = QQTimeTool.getFormatTime(timeInterval: musicMessageM.totalTime)
+        
+        // 切换最新的歌词
+        let lrcMs = QQMusicDataTool.getLrcMs(lrcName: musicM.lrcname)
         
         addRotationAnimation()
         

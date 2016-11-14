@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		545517F31DD7DD4800251051 /* QQLrcModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 545517F21DD7DD4800251051 /* QQLrcModel.swift */; };
 		5468AA001DCCBD6300AD2CF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5468A9FE1DCCBD6300AD2CF3 /* Main.storyboard */; };
 		5468AA021DCCBD6300AD2CF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5468AA011DCCBD6300AD2CF3 /* Assets.xcassets */; };
 		5468AA051DCCBD6300AD2CF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5468AA031DCCBD6300AD2CF3 /* LaunchScreen.storyboard */; };
@@ -67,6 +68,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		545517F21DD7DD4800251051 /* QQLrcModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQLrcModel.swift; sourceTree = "<group>"; };
 		5468A9F71DCCBD6300AD2CF3 /* QQMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QQMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5468A9FF1DCCBD6300AD2CF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5468AA011DCCBD6300AD2CF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				54E4C0F61DD7AFFE00E0F04F /* QQMusicMessageModel.swift */,
+				545517F21DD7DD4800251051 /* QQLrcModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				5468AA1C1DCCC1A200AD2CF3 /* AppDelegate.swift in Sources */,
 				5468AA7E1DCCDCD000AD2CF3 /* QQMusicDataTool.swift in Sources */,
 				54E4C0F91DD7BBB000E0F04F /* QQTimeTool.swift in Sources */,
+				545517F31DD7DD4800251051 /* QQLrcModel.swift in Sources */,
 				54E4C0F71DD7AFFE00E0F04F /* QQMusicMessageModel.swift in Sources */,
 				5468AA841DCD07D200AD2CF3 /* QQMusicTool.swift in Sources */,
 				5468AA7B1DCCD87100AD2CF3 /* QQMusicModel.swift in Sources */,
