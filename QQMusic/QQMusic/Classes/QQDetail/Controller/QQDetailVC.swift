@@ -33,7 +33,7 @@ class QQDetailVC: UIViewController {
     @IBOutlet weak var totalTimeLabel: UILabel!
     
     /** 歌词label n */
-    @IBOutlet weak var lrclabel: UILabel!
+    @IBOutlet weak var lrclabel: QQLrcLabel!
     /** 已经播放时长 n */
     @IBOutlet weak var costTimeLabel: UILabel!
     /** 进度条 n */
@@ -194,6 +194,16 @@ extension QQDetailVC {
         
         // 赋值
         lrclabel.text = lrcM?.lrcContent
+        
+        // 进度
+        if(lrcM != nil){
+            let time1 = time - lrcM!.beginTime
+            let time2 = lrcM!.endTime - lrcM!.beginTime
+            
+            lrclabel.radio = CGFloat(time1 / time2)
+        }
+        lrcVc?.progress = lrclabel.radio
+        
         
         // 滚动歌词
         // 滚到哪一行

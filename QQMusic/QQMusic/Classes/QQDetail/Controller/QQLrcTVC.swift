@@ -13,15 +13,35 @@ import UIKit
 
 class QQLrcTVC: UITableViewController {
 
-    
-    var scrollRow = 0{
+    // 提供给外界赋值的进度
+    var progress : CGFloat = 0{
         didSet{
+            // 拿到当前正在播放的cell
+            let indexPath = NSIndexPath(row: scrollRow, section: 0)
+            let cell = tableView.cellForRow(at: indexPath as IndexPath) as? QQLrcCell
+            
+            // 给cell里面的label的进度赋值
+            cell?.progress = progress
+        }
+    
+    }
+    
+    
+    // 提供给外界的数值，代表需要滚动的行数
+    var scrollRow = -1{
+        didSet{
+            // 过滤值，降低滚动频率
+            // 如果两个值相等，代表滚动的是同一行，没有必要滚动很多次
             if scrollRow == oldValue{
                 return
             }
             
+            let indexPaths = tableView.indexPathsForVisibleRows
+            tableView.reloadRows(at: indexPaths!, with: .fade)
+            
             let indexPath = NSIndexPath(row: scrollRow, section: 0)
             tableView.scrollToRow(at: indexPath as IndexPath, at: UITableViewScrollPosition.middle, animated: true)
+        
         }
     }
     
@@ -47,22 +67,21 @@ class QQLrcTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellID = "lrc"
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellID)
-        if cell == nil{
-            cell = UITableViewCell(style: .default, reuseIdentifier: cellID)
         
-        // 设置cell的基本界面
-            cell?.backgroundColor = UIColor.clear
-            cell?.textLabel?.textAlignment = .center
-            cell?.textLabel?.textColor = UIColor.white
-        }
+        let cell = QQLrcCell.cellWithTableView(tableView: tableView)
         
+        // 取出歌词模型
         let model = lrcMs[indexPath.row]
         
-        cell?.textLabel?.text = model.lrcContent
+        if indexPath.row == scrollRow{
+            cell.progress = progress
+        }else{
+            cell.progress = 0
+        }
         
-        return cell!
+        cell.lrcContent = model.lrcContent
+        
+        return cell
     }
     
 }
