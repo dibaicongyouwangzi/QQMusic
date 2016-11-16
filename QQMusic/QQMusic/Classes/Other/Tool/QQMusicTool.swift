@@ -12,6 +12,27 @@ import AVFoundation
 
 class QQMusicTool: NSObject {
     
+    override init() {
+        super.init()
+        
+        // 1.获取音频会话
+        let session = AVAudioSession.sharedInstance()
+        
+        do{
+            // 2.设置会话类别（后台播放）
+            try session.setCategory(AVAudioSessionCategoryPlayback)
+            
+            // 3.激活会话
+            try session.setActive(true)
+            
+        }catch{
+            print(error)
+            return
+        }
+        
+    }
+    
+    
     var player:AVAudioPlayer?
     
     func playMusic(musicName: String){

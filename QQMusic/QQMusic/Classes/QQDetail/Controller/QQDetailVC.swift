@@ -211,6 +211,8 @@ extension QQDetailVC {
         
         // 赋值给lrcVC，让它来负责具体怎么滚
         lrcVc?.scrollRow = row
+        
+        QQMusicOperationTool.shareInstance.setupLockMessage()
     }
     
 }
@@ -264,7 +266,7 @@ extension QQDetailVC: UIScrollViewDelegate{
    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let x = scrollView.contentOffset.x
-        print(x)
+//        print(x)
         
         let radio = 1 - x / scrollView.frame.size.width
         
@@ -298,6 +300,39 @@ extension QQDetailVC: UIScrollViewDelegate{
 
 }
 
+
+
+extension QQDetailVC {
+
+    override func remoteControlReceived(with event: UIEvent?) {
+        
+        let type = event?.subtype
+        switch type! {
+        case .remoteControlPlay:
+            print("播放")
+            QQMusicOperationTool.shareInstance.playCurrentMusic()
+        case .remoteControlPause:
+            print("暂停")
+            QQMusicOperationTool.shareInstance.pauseCurrentMusic()
+        case .remoteControlNextTrack:
+            print("下一首")
+            QQMusicOperationTool.shareInstance.nextMusic()
+        case .remoteControlPreviousTrack:
+            print("上一首")
+            QQMusicOperationTool.shareInstance.preMusic()
+        default:
+            print("nono")
+        }
+        
+        setupOnce()
+    }
+    
+    override func motionBegan(_ motion: UIEventSubtype, with event: UIEvent?) {
+        QQMusicOperationTool.shareInstance.nextMusic()
+        setupOnce()
+    }
+    
+}
 
 
 
