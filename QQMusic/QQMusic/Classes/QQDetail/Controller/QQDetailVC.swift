@@ -52,7 +52,7 @@ class QQDetailVC: UIViewController {
 extension QQDetailVC {
     
     @IBAction func close() {
-        navigationController?.popViewController(animated: true)
+        self .dismiss(animated: true, completion: nil)
     }
     
     // 播放或者暂停
@@ -212,7 +212,11 @@ extension QQDetailVC {
         // 赋值给lrcVC，让它来负责具体怎么滚
         lrcVc?.scrollRow = row
         
-        QQMusicOperationTool.shareInstance.setupLockMessage()
+        // 设置锁屏信息
+        if UIApplication.shared.applicationState == .background{
+        
+            QQMusicOperationTool.shareInstance.setupLockMessage()
+        }
     }
     
 }
