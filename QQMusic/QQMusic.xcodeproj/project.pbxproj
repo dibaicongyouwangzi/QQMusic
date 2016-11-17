@@ -69,6 +69,7 @@
 		54E4C0F71DD7AFFE00E0F04F /* QQMusicMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E4C0F61DD7AFFE00E0F04F /* QQMusicMessageModel.swift */; };
 		54E4C0F91DD7BBB000E0F04F /* QQTimeTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E4C0F81DD7BBB000E0F04F /* QQTimeTool.swift */; };
 		54E4C1001DD7D0BB00E0F04F /* CALayer+sz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E4C0FF1DD7D0BB00E0F04F /* CALayer+sz.swift */; };
+		54E668A01DDDC98200AB3F92 /* QQImageTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E6689F1DDDC98200AB3F92 /* QQImageTool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -136,6 +137,7 @@
 		54E4C0F61DD7AFFE00E0F04F /* QQMusicMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQMusicMessageModel.swift; sourceTree = "<group>"; };
 		54E4C0F81DD7BBB000E0F04F /* QQTimeTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQTimeTool.swift; sourceTree = "<group>"; };
 		54E4C0FF1DD7D0BB00E0F04F /* CALayer+sz.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+sz.swift"; sourceTree = "<group>"; };
+		54E6689F1DDDC98200AB3F92 /* QQImageTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QQImageTool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 				5468AA831DCD07D200AD2CF3 /* QQMusicTool.swift */,
 				5468AA851DCD0B0800AD2CF3 /* QQMusicOperationTool.swift */,
 				54E4C0F81DD7BBB000E0F04F /* QQTimeTool.swift */,
+				54E6689F1DDDC98200AB3F92 /* QQImageTool.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				5468AA861DCD0B0800AD2CF3 /* QQMusicOperationTool.swift in Sources */,
 				548F96541DD9DAF100F71FA7 /* QQLrcLabel.swift in Sources */,
 				548F96521DD9AF4200F71FA7 /* QQLrcTVC.swift in Sources */,
+				54E668A01DDDC98200AB3F92 /* QQImageTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
